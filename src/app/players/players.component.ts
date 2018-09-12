@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PlayerClass} from '../player';
+import {PLAYERS} from '../player-stock';
 
 @Component({
   selector: 'app-players',
@@ -8,11 +9,7 @@ import {PlayerClass} from '../player';
 })
 export class PlayersComponent implements OnInit {
 
-  private player: PlayerClass = {
-    keyCode : 'D',
-    name : 'Kobe Bryant',
-    color : '#BD10E0'
-   };
+  private players : PlayerClass[] = PLAYERS;
 
   constructor() { }
 
