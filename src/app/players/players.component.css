@@ -1,0 +1,22 @@
+.player
+{
+  background: #F2F2F2;
+  border-radius: 10px;
+  font-size: 2em;
+  margin: 5px;
+}
+.player .keycode
+{
+  background-color: #BD10E0;
+  border-radius: 10px 0px 0 10px;
+  color:#fff;
+  display: inline-block;
+  height: 1em;
+  padding:1em;
+  text-align: center;
+  width: 1em;
+}
+.player .name
+{
+  margin-left: 1em;
+}
