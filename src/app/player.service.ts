@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { PlayerClass } from './player';
 import { PLAYERS,KEYCODES } from './player-stock';
 
+declare var chroma:any;
+import * as chroma from 'chroma-js';
+
 @Injectable()
 export class PlayerService {
 
@@ -24,7 +27,7 @@ export class PlayerService {
     var newKeyCode = this.keyCodes.charAt(randomNum);
     // Exit without creating a player, if unique keycode not available.
     if(newKeyCode  === '') return;
-    var newPlayer = {name:name,keyCode:newKeyCode,color:'#341122'};
+    var newPlayer = {name:name,keyCode:newKeyCode,color:chroma.random().hex()};
     this.players.push(newPlayer);
    }
 
