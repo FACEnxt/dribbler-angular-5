@@ -39,3 +39,27 @@
  text-align: center;
  width: 3em;
 }
+/** Players whiles they are playing **/
+.players.playing .player
+{
+ float: left;
+ background: none;
+ transform: translate3d(0, 0, 0);
+ animation: bounce;
+ animation-duration: 10s;
+ animation-direction : normal;
+ animation-iteration-count: infinite;
+}
+.players.playing .player .keycode
+{
+ border-radius: 100%;
+}
+.players.playing .player .name,.players.playing .player .score
+{
+ display: none;
+}
+/** Animation CSS **/
+@keyframes bounce {
+ 50% { transform: translate3d(0, 60vh, 0);   }
+ 100% { transform: translate3d(0, 0, 0);   }
+}
