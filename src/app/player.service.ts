@@ -56,4 +56,17 @@ scorePlayers(event):void{
    }
 }
 
+//Increase / decrease the speed of dribble based on dribbles_left per second
+ dribbling():void{
+  (this.players).forEach(function(player)
+  {
+   // Duration of dribble if dribbles_left is greater than 0
+   player.duration = (player.dribbles_left>0?1/player.dribbles_left:0)+'s';
+   player.dribbles_left = 0;
+  });
+  var t = this;
+  // Call this function again after 1 second
+  setTimeout(function(){ t.dribbling();},1000)
+ }
+
 }

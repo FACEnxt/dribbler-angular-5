@@ -3,7 +3,7 @@
   <button (click)="this.playerservice.addPlayer(newPlayerName.value); newPlayerName.value=''"> + </button>
 </div>
 <div class="players" [class.playing]="firstScreen === 'playarea'">
-  <div class="player" *ngFor="let player of playerservice.getPlayers()">
+  <div class="player" *ngFor="let player of playerservice.getPlayers()" [style.animationDuration]="player.duration">
     <span class="keycode" [style.backgroundColor]="player.color">{{ player.keyCode}}</span>
     <span class="name">{{ player.name }}</span>
     <span class="score" *ngIf="firstScreen !== true">{{ player.score }}</span>

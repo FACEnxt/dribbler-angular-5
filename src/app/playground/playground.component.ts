@@ -12,6 +12,7 @@ export class PlaygroundComponent implements OnInit {
   constructor(private playerservice : PlayerService) { }
 
   ngOnInit() {
+    this.playerservice.dribbling();
   }
 
   /* Keyboard Event Listener */
