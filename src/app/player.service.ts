@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { PlayerClass } from './player';
 import { PLAYERS,KEYCODES } from './player-stock';
+import { Router } from '@angular/router';
 
 declare var chroma:any;
 import * as chroma from 'chroma-js';
@@ -10,8 +11,9 @@ export class PlayerService {
 
   private players : PlayerClass[];
   private keyCodes : string = KEYCODES;
+  private maxScore : number = 100;
 
-  constructor() { }
+  constructor(private router : Router) { }
 
   getPlayers() : PlayerClass[] {
     // If its defined in localStorage
@@ -56,6 +58,7 @@ export class PlayerService {
 
  // Score player whenever he dribbles
 scorePlayers(event):void{
+var t = this;
   var key = String.fromCharCode(event.keyCode);
   //Key codes for A = 65  and Z = 90
   if(event.keyCode>64 && event.keyCode<91)
@@ -67,6 +70,10 @@ scorePlayers(event):void{
       {
             player.score +=10;
             player.dribbles_left +=1;
+            if(player.score> t.maxScore)
+            {
+              t.router.navigate(['/winner',{player:JSON.stringify(player)}]);
+            }
       }
      });
    }
