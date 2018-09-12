@@ -38,4 +38,22 @@ export class PlayerService {
     });
  }
 
+ // Score player whenever he dribbles
+scorePlayers(event):void{
+  var key = String.fromCharCode(event.keyCode);
+  //Key codes for A = 65  and Z = 90
+  if(event.keyCode>64 && event.keyCode<91)
+  {
+    //Find the player for pressed keyCode
+    (this.players).forEach(function(player)
+    {
+      if(player.keyCode == key)
+      {
+            player.score +=10;
+            player.dribbles_left +=1;
+      }
+     });
+   }
+}
+
 }
