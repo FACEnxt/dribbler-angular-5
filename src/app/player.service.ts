@@ -8,12 +8,22 @@ import * as chroma from 'chroma-js';
 @Injectable()
 export class PlayerService {
 
-  private players : PlayerClass[] = PLAYERS;
+  private players : PlayerClass[];
   private keyCodes : string = KEYCODES;
 
   constructor() { }
 
   getPlayers() : PlayerClass[] {
+    // If its defined in localStorage
+      if(typeof localStorage !== 'undefined'
+      && typeof localStorage.players !=='undefined'
+      && localStorage.players !==''){
+        this.players = JSON.parse(localStorage.players);
+      }
+      // If its not defined in localStorage, then take the stock players
+      else{
+       this.players = PLAYERS ;
+      }
     return this.players ;
   }
 
@@ -29,6 +39,12 @@ export class PlayerService {
     if(newKeyCode  === '') return;
     var newPlayer = {name:name,keyCode:newKeyCode,color:chroma.random().hex(),score:0,duration:'0s',dribbles_left:0};
     this.players.push(newPlayer);
+    // If localStorage is available in this browser
+    //Store the players after stringifying  in localStorage
+    if(typeof localStorage !== 'undefined')
+    {
+        localStorage.setItem('players',JSON.stringify(this.players));
+    }
    }
 
    cleanKeyCodes(): void{
@@ -58,6 +74,10 @@ scorePlayers(event):void{
 
 //Increase / decrease the speed of dribble based on dribbles_left per second
  dribbling():void{
+ if(typeof this.players === 'undefined')
+ {
+  this.players = this.getPlayers();
+ }
   (this.players).forEach(function(player)
   {
    // Duration of dribble if dribbles_left is greater than 0

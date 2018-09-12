@@ -13,6 +13,7 @@ export class PlayersComponent implements OnInit {
   constructor(private playerservice:PlayerService) { }
 
   ngOnInit() {
+      this.playerservice.getPlayers();
   }
 
 }
