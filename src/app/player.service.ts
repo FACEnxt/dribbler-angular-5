@@ -27,7 +27,7 @@ export class PlayerService {
     var newKeyCode = this.keyCodes.charAt(randomNum);
     // Exit without creating a player, if unique keycode not available.
     if(newKeyCode  === '') return;
-    var newPlayer = {name:name,keyCode:newKeyCode,color:chroma.random().hex()};
+    var newPlayer = {name:name,keyCode:newKeyCode,color:chroma.random().hex(),score:0,duration:'0s',dribbles_left:0};
     this.players.push(newPlayer);
    }
 

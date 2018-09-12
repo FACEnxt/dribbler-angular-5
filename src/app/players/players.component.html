@@ -6,5 +6,6 @@
   <div class="player" *ngFor="let player of playerservice.getPlayers()">
     <span class="keycode" [style.backgroundColor]="player.color">{{ player.keyCode}}</span>
     <span class="name">{{ player.name }}</span>
+    <span class="score" *ngIf="firstScreen !== true">{{ player.score }}</span>
   </div>
 ﻿</div>
