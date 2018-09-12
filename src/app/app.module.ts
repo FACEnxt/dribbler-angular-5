@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { PlayersComponent } from './players/players.component';
 
 import {PlayerService} from './player.service';
+import { PlaygroundComponent } from './playground/playground.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PlayersComponent
+    PlayersComponent,
+    PlaygroundComponent
   ],
   imports: [
     BrowserModule

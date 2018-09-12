@@ -1,4 +1,4 @@
-<div class="new_player">
+<div class="new_player" *ngIf=" firstScreen === true">
   <input #newPlayerName placeholder="New Player"/>
   <button (click)="this.playerservice.addPlayer(newPlayerName.value); newPlayerName.value=''"> + </button>
 </div>
